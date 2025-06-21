@@ -2,6 +2,7 @@
 
 ## 1. 🧱 ディレクトリ構成
 
+<pre><code>'''
 todo-flask/
 ├── app.py # アプリ本体
 ├── templates/
@@ -14,7 +15,7 @@ todo-flask/
 ├── README.md # プロジェクト説明
 ├── LICENSE # MITライセンス
 └── .gitignore # Git追跡除外ファイル
-
+'''</code></pre>
 
 
 ## 2. 🧩 モジュール・関数設計
@@ -62,7 +63,7 @@ todo-flask/
     </form>
   </li>
 {% endfor %}
-
+```
 ---
 
 ## 5. ⚙ データベース接続（`get_db_connection()`）
@@ -76,7 +77,7 @@ def get_db_connection():
         g.db = sqlite3.connect('instance/todo.db')
         g.db.row_factory = sqlite3.Row
     return g.db
-
+```
 ---
 
 ## 6. 🔐 バリデーション・セキュリティ対応
