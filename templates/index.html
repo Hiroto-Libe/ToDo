@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDoリストアプリ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>📝 ToDoリスト</h1>
+
+  <!-- タスク追加フォーム -->
+  <form action="{{ url_for('add') }}" method="POST">
+    <input type="text" name="task" placeholder="新しいタスクを入力" maxlength="100" required>
+    <button type="submit">追加</button>
+  </form>
+
+  <!-- フィルターリンク -->
+  <div>
+    <a href="{{ url_for('index') }}">すべて</a> /
+    <a href="{{ url_for('filter_status', status='undone') }}">未完了</a> /
+    <a href="{{ url_for('filter_status', status='done') }}">完了</a>
+  </div>
+
+  <!-- タスクリスト -->
+  <ul>
+    {% for todo in todos %}
+      <li>
+        <form action="{{ url_for('complete', id=todo.id) }}" method="POST" style="display: inline;">
+          <input type="checkbox" onchange="this.form.submit()" {% if todo.done %}checked{% endif %}>
+        </form>
+        <span style="text-decoration: {% if todo.done %}line-through{% else %}none{% endif %};">
+          {{ todo.task }}
+        </span>
+        <form action="{{ url_for('delete', id=todo.id) }}" method="POST" style="display: inline;">
+          <button type="submit">削除</button>
+        </form>
+      </li>
+    {% else %}
+      <li>タスクはありません。</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

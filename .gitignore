@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# SQLite DB
+*.db
+
+# Flask instance folder
+instance/
+
+# venv (virtual environment)
+venv/
+ENV/
+env/
+.venv/
+
+# VSCodeなどエディタ設定
+.vscode/
+.idea/
+
+# OS関連ファイル
+.DS_Store
+Thumbs.db
+
+# その他
+*.log
